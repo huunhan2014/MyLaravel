@@ -72,3 +72,14 @@ Route::get('getForm', function () {
     return view('postForm');
 });
 Route::post('postForm', 'MyController@postForm')->name('postForm');
+
+//gọi hàm đặt Cookie  
+Route::get('setCookie', 'MyController@setCookie');
+//gọi hàm hiển thị Cookie 
+Route::get('getCookie', 'MyController@getCookie')->name('getCookie');
+
+//Upload File
+Route::get('uploadFile', function () {
+    return view('postFile');
+});
+Route::post('postFile', 'MyController@postFile')->name('postFile');
