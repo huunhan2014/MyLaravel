@@ -66,7 +66,12 @@ class MyController extends Controller
     public function getJson()
     {
         // $arr = ['Laravel', 'PHP', 'MySql', 'Javascript'];
-        $arr = ['Project' => 'MyLaravel','name'=>'Nhan'];
+        $arr = ['Project' => 'MyLaravel', 'name' => 'Nhan'];
         return response()->json($arr);
+    }
+    //Goi View
+    public function myView1()
+    {
+        return view('view.myView');// su dung dau . thay vi` dau /
     }
 }
