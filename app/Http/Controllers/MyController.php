@@ -46,6 +46,7 @@ class MyController extends Controller
         echo "Cookie la`:";
         return $request->cookie('Project');
     }
+    // Upload File
     public function postFile(Request $request)
     {
         if ($request->hasFile('myFile')) {
@@ -53,13 +54,19 @@ class MyController extends Controller
             if ($fileExtension = $file->getClientOriginalExtension() == 'JPG') {
                 $fileName = $file->getClientOriginalName();
                 $file->move('images', $fileName);
-                echo "Da upload file:".$fileName;
+                echo "Da upload file:" . $fileName;
             } else {
                 echo "Ko phai JPG";
             }
         } else {
             echo 'chua co file';
         }
-        
+    }
+    //Xuat Json
+    public function getJson()
+    {
+        // $arr = ['Laravel', 'PHP', 'MySql', 'Javascript'];
+        $arr = ['Project' => 'MyLaravel','name'=>'Nhan'];
+        return response()->json($arr);
     }
 }

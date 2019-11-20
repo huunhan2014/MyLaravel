@@ -83,3 +83,5 @@ Route::get('uploadFile', function () {
     return view('postFile');
 });
 Route::post('postFile', 'MyController@postFile')->name('postFile');
+// Json
+Route::get('getJson', 'MyController@getJson');
