@@ -13,13 +13,13 @@ class MyController extends Controller
     }
     public function ham1()
     {
-        $url = route('Route1');
+        $url = route('Route2');
         return redirect($url);
     }
     public function getUrl(Request $request)
     {
         echo $request->path() . '<br>'; // tra ve path (duong dan) cua route goi no
-        echo $request->url() . '<br>';
+        echo $request->url() . '<br>'; // url full
         echo ($request->is('Get*')) ? 'true' . '<br>' : 'false' . '<br>';
         echo ($request->isMethod('post')) ? 'day la method post' : 'day la phuong thuc get';
         return;
@@ -30,7 +30,7 @@ class MyController extends Controller
         // return $request->HoTen;
 
         $HoTen = ($request->has('HoTen')) ? $request->input('HoTen') : '';
-        echo $HoTen;
+        echo 'kq la`:', $HoTen;
     }
     // đặt Cookie  
     public function setCookie()
@@ -51,7 +51,7 @@ class MyController extends Controller
     {
         if ($request->hasFile('myFile')) {
             $file = $request->file('myFile');
-            if ($fileExtension = $file->getClientOriginalExtension() == 'JPG') {
+            if ($file->getClientOriginalExtension() == 'JPG') {
                 $fileName = $file->getClientOriginalName();
                 $file->move('images', $fileName);
                 echo "Da upload file:" . $fileName;
@@ -72,6 +72,14 @@ class MyController extends Controller
     //Goi View
     public function myView1()
     {
-        return view('view.myView');// su dung dau . thay vi` dau /
+        if (view()->exists('View.myView')) {
+            return view('View.myView');
+        } else {
+            return 'ko co view';
+        } // su dung dau . thay vi` dau /
+    }
+    public function truyenView($t)
+    {
+        return view('View.myView', ['thamSo' => $t]);
     }
 }

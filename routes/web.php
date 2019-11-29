@@ -24,6 +24,10 @@ Route::get('HoTen/{ten}', function ($ten) {
     echo "<h3>Ten cua toi la: $ten</h3>";
 });
 
+Route::get('HoTen/{ten?}', function ($ten = 'Nhan') {
+    echo "<h3>Ten cua toi la: $ten</h3>";
+});
+
 Route::get('Time/{time}', function ($time) {
     // $time = date('d/m/Y');
     echo "Time is: $time";
@@ -88,6 +92,10 @@ Route::get('getJson', 'MyController@getJson');
 
 //Goi View
 Route::get('myView', function () {
-    return view('view.myView');
+    return view('View.myView');
 });
 Route::get('myView1', 'MyController@myView1');
+
+// Truyen tham so qua View
+Route::get('truyenView/{t}', 'MyController@truyenView');
+View::share('thamSoShare','Tham so share');

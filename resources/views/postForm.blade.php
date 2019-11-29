@@ -3,3 +3,4 @@
     <input type="text" name="HoTen">
     <input type="submit" value="Submit">
 </form>
+<?= $thamSoShare //nhan tham so tu view::share ?> 
